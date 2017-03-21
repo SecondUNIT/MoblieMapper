@@ -13,6 +13,9 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     
+    let address = "Mount Fuji"
+    let geocoder = CLGeocoder()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -23,6 +26,17 @@ class ViewController: UIViewController {
         herseyAnnotation.coordinate = coordinate
         herseyAnnotation.title = "Hersey High School"
         mapView.addAnnotation(herseyAnnotation)
+        
+        geocoder.geocodeAddressString(address) { (placemarks, error) in
+            //print(placemarks?.count)
+            for place in placemarks!
+            {
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = (place.location?.coordinate)!
+                annotation.title = place.name
+                self.mapView.addAnnotation(annotation)
+            }
+        }
     }
 
 
