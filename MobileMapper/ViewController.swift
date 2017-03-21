@@ -16,6 +16,8 @@ class ViewController: UIViewController {
     let address = "Mount Fuji"
     let geocoder = CLGeocoder()
     
+    let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,6 +39,9 @@ class ViewController: UIViewController {
                 self.mapView.addAnnotation(annotation)
             }
         }
+        
+        locationManager.requestWhenInUseAuthorization()
+        mapView.showsUserLocation = true
     }
 
 
