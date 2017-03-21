@@ -16,6 +16,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let herseyAnnotation = MKPointAnnotation()
+        let lat: Double = 42.102332924
+        let long: Double = -84.955667844
+        let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        herseyAnnotation.coordinate = coordinate
+        herseyAnnotation.title = "Hersey High School"
+        mapView.addAnnotation(herseyAnnotation)
     }
 
 
